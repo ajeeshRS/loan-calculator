@@ -2,7 +2,6 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -15,28 +14,54 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Switch } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const drawerWidth = 240;
 const navItems = ["HOME", "EXCHANGE RATES (LIVE)", "ABOUT", "ERROR PAGE"];
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [currentNavSelection, setCurrentNavSelection] = React.useState(0);
+
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleNavSelection = (index: number) => {
+    setCurrentNavSelection(index);
+
+    switch (index) {
+      case 1:
+        navigate(`/exchange-live-rates`);
+        break;
+      case 3:
+        navigate(`/error-page`);
+        break;
+      default:
+        navigate(`/${navItems[index].toLocaleLowerCase()}`);
+        break;
+    }
+  };
+
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "justify" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
-      </Typography>
-      <Divider />
+    <Box onClick={handleDrawerToggle}>
       <List>
-        {navItems.map((item) => (
+        {navItems.map((item, i) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+            <ListItemButton sx={{ textAlign: "start" }}>
+              <ListItemText
+                onClick={() => handleNavSelection(i)}
+                primary={item}
+                sx={{
+                  bgcolor:
+                    currentNavSelection === i ? "#1876D1" : "transparent",
+                  color: currentNavSelection === i ? "#fff" : "#000",
+                  borderRadius: "5px",
+                  padding: "5px",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -62,7 +87,12 @@ function Navbar() {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
+              sx={{
+                mr: 2,
+                display: { sm: "none" },
+                ":focus": { outline: 0, border: 0 },
+                ":hover": { bgcolor: "#4088D8"   },
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -71,16 +101,17 @@ function Navbar() {
               component="div"
               sx={{
                 flexGrow: 1,
-                display: { xs: "none", sm: "flex" },
+                display: "flex",
                 justifyContent: "start",
               }}
             >
               Loan calculator
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {navItems.map((item) => (
+              {navItems.map((item, i) => (
                 <Button
                   key={item}
+                  onClick={() => handleNavSelection(i)}
                   variant="text"
                   sx={{
                     color: "#fff",
@@ -88,6 +119,8 @@ function Navbar() {
                     marginRight: "25px",
                     outline: "0px",
                     border: "0px",
+                    bgcolor:
+                      currentNavSelection === i ? "#4088D8" : "transparent",
                     ":hover": { bgcolor: "#4088D8" },
                     ":focus": { outline: "0px", border: "0px" },
                   }}
@@ -95,8 +128,8 @@ function Navbar() {
                   {item}
                 </Button>
               ))}
-              <Switch />
             </Box>
+            <Switch />
           </Toolbar>
         </AppBar>
         <nav>
@@ -118,7 +151,7 @@ function Navbar() {
             {drawer}
           </Drawer>
         </nav>
-        <Outlet/>
+        <Outlet />
       </Box>
     </>
   );

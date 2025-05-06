@@ -9,6 +9,8 @@ import FormControl from "@mui/material/FormControl";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
 import type { AmortizationScheduleRow, Currency } from "../utils/types";
 
+export const currencies = ["USD", "EUR", "INR", "CAD", "GBP", "JPY", "AUD"];
+
 function Dashboard() {
   const [loanAmount, setLoanAmount] = useState(10000);
   const [interestRate, setInterestRate] = useState(8.5);
@@ -19,7 +21,6 @@ function Dashboard() {
 
   const theme = useTheme();
 
-  const currencies = ["USD", "EUR", "INR", "CAD", "GBP", "JPY", "AUD"];
 
   const styles = {
     inputBox: {

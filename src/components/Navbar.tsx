@@ -33,6 +33,9 @@ function Navbar() {
     setCurrentNavSelection(index);
 
     switch (index) {
+      case 0:
+        navigate(`/`);
+        break;
       case 1:
         navigate(`/exchange-live-rates`);
         break;
@@ -91,7 +94,7 @@ function Navbar() {
                 mr: 2,
                 display: { sm: "none" },
                 ":focus": { outline: 0, border: 0 },
-                ":hover": { bgcolor: "#4088D8"   },
+                ":hover": { bgcolor: "#4088D8" },
               }}
             >
               <MenuIcon />

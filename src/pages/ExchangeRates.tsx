@@ -84,12 +84,10 @@ function ExchangeRates() {
             defaultValue={0}
           />
           <FormControl sx={{ m: 1, minWidth: 80, mr: "20px" }}>
-            <InputLabel id="demo-simple-select-autowidth-label">
-              Currency
-            </InputLabel>
+            <InputLabel id="simple-select">Currency</InputLabel>
             <Select
-              labelId="demo-simple-select-autowidth-label"
-              id="demo-simple-select-autowidth"
+              labelId="simple-select"
+              id="select-currency"
               value={currency}
               defaultValue="USD"
               onChange={(e: SelectChangeEvent) =>
@@ -116,12 +114,10 @@ function ExchangeRates() {
             defaultValue={0}
           />
           <FormControl sx={{ m: 1, minWidth: 80 }}>
-            <InputLabel id="demo-simple-select-autowidth-label">
-              Currency
-            </InputLabel>
+            <InputLabel id="simple-select">Currency</InputLabel>
             <Select
-              labelId="demo-simple-select-autowidth-label"
-              id="demo-simple-select-autowidth"
+              labelId="simple-select"
+              id="select-currency"
               value={toCurrency}
               defaultValue="USD"
               onChange={(e: SelectChangeEvent) =>

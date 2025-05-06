@@ -57,7 +57,6 @@ function Dashboard() {
       interestRate,
       termInYears
     );
-    console.log(emi, schedules);
     setEmi(emi);
     setSchedules(schedules);
   };
@@ -186,12 +185,12 @@ function Dashboard() {
             >
               {/* currency select input */}
               <FormControl sx={{ m: 1, minWidth: 80 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">
+                <InputLabel id="select-label">
                   Currency
                 </InputLabel>
                 <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
+                  labelId="select-label"
+                  id="simple-select"
                   value={currency}
                   defaultValue="USD"
                   onChange={(e: SelectChangeEvent) =>

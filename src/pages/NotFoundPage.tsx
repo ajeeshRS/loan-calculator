@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 function NotFoundPage() {
   return (
@@ -7,15 +7,21 @@ function NotFoundPage() {
         width: "100vw",
         height: "100vh",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <Typography
-        sx={{ fontWeight: "bold", fontSize: { md: "23px", xs: "16px" } }}
+        sx={{
+          fontWeight: "bold",
+          fontSize: { md: "23px", xs: "16px" },
+          mb: "25px",
+        }}
       >
-        404 Page not Found
+        404 Page Not Found
       </Typography>
+      <Button variant="outlined">Go to Home</Button>
     </Box>
   );
 }

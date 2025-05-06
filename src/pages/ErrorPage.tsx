@@ -1,6 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function ErrorPage() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -21,7 +23,9 @@ function ErrorPage() {
       >
         Something went wrong
       </Typography>
-      <Button variant="outlined">Go to Home</Button>
+      <Button variant="outlined" onClick={() => navigate("/")}>
+        Go to Home
+      </Button>
     </Box>
   );
 }

@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Switch } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = ["HOME", "EXCHANGE RATES (LIVE)", "ABOUT", "ERROR PAGE"];

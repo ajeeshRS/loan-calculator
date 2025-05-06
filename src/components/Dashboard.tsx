@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
 
 function Dashboard() {
   const styles = {
@@ -11,18 +11,24 @@ function Dashboard() {
     },
   };
 
+  const theme = useTheme();
+
   return (
     <Box
       className="dashboard"
       sx={{
-        paddingLeft: { xs: "25px", sm: "30px" },
+        paddingLeft: { xs: "25px", sm: "30px", md: "100px" },
         paddingRight: { xs: "25px", sm: "20px" },
         mt: "20px",
       }}
     >
       <Typography
         style={styles.heading}
-        sx={{ fontSize: { xs: "20px", sm: "28px" }, mb: 2 }}
+        sx={{
+          fontSize: { xs: "20px", sm: "28px" },
+          mb: 2,
+          color: theme.palette.mode === "dark" ? "#fff" : "#000",
+        }}
       >
         Loan Calculator Dashboard
       </Typography>
@@ -54,7 +60,6 @@ function Dashboard() {
         <Button
           variant="contained"
           sx={{
-            color: "#fff",
             fontSize: "15px",
             marginRight: "25px",
             outline: "0px",

@@ -19,7 +19,7 @@ import { useNavigate } from "react-router";
 const drawerWidth = 240;
 const navItems = ["HOME", "EXCHANGE RATES (LIVE)", "ABOUT", "ERROR PAGE"];
 
-function Navbar() {
+function Navbar({ toggleTheme }: { toggleTheme: () => void }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [currentNavSelection, setCurrentNavSelection] = React.useState(0);
 
@@ -132,7 +132,7 @@ function Navbar() {
                 </Button>
               ))}
             </Box>
-            <Switch />
+            <Switch onClick={toggleTheme} />
           </Toolbar>
         </AppBar>
         <nav>
